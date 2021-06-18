@@ -1,0 +1,62 @@
+# Performance: What is the all fuss?
+
+Mohamed Yousif (adonese)
+9 July 2021
+me@adonese.sd
+
+## Agenda
+
+- We gonna talk about performance
+- Concurrency and parallelism 
+- Metrics, benchmarks and so
+- Live code session
+
+## About me
+
+- Mohamed Yousif
+- Backend, interested in tech and programming in general
+- Worked in financial systems, gis, etc
+- [Github account](https://github.com/adonese)
+- Between jobs now
+
+## Let's talk Performance
+
+- Performance?
+- What is Performance?
+- Is my code slow?
+
+I'm not going to go through that all
+
+## Subsection {#anchor}
+
+- bullets
+- more bullets
+- a bullet continued
+  on the next line
+
+### Sub-subsection
+
+.image statics/1.png
+
+Some More text
+
+	Preformatted text (code block)
+	is indented (by one tab, or four spaces)
+
+Further Text, including command invocations.
+
+## Section 2: Example formatting {#fmt}
+
+Formatting:
+
+_italic_
+// A comment that is completely ignored.
+: Speaker notes.
+**bold**
+`program`
+Markup—_especially italic text_—can easily be overused.
+_Why use scoped\_ptr_? Use plain **\*ptr** instead.
+
+Visit [the Go home page](https://golang.org/).
+
+.play main.go

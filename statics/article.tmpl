@@ -1,0 +1,6 @@
+# Title of document
+Subtitle of document
+15:04 2 Jan 2006
+Tags: foo, bar, baz
+Summary: This is a great document you want to read.
+OldURL: former-path-for-this-doc
