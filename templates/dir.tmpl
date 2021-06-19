@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Public Slides | adonese</title>
+  <link type="text/css" rel="stylesheet" href="/static/dir.css">
+  <script src="/static/dir.js"></script>
+  <script>
+    // Initialize Google Analytics tracking code on production site only.
+    if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
+      var _gaq = _gaq || [];
+      _gaq.push(["_setAccount", "UA-11222381-6"]);
+      _gaq.push(["b._setAccount", "UA-49880327-6"]);
+      window.trackPageview = function() {
+        _gaq.push(["_trackPageview", location.pathname+location.hash]);
+        _gaq.push(["b._trackPageview", location.pathname+location.hash]);
+      };
+      window.trackPageview();
+      window.trackEvent = function(category, action, opt_label, opt_value, opt_noninteraction) {
+        _gaq.push(["_trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+        _gaq.push(["b._trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+      };
+    }
+  </script>
+</head>
+<body>
+
+<div id="topbar"><div class="container">
+
+<form method="GET" action="//golang.org/search">
+<div id="menu">
+<a href="http://noebs.dev">Noebs</a>
+<a href="http://adonese.sd">Blog Post</a>
+<a href="http://twitter.com/_adonese">Twitter</a>
+<a href="http://github.com/noebs/">Open Source Org</a>
+<a href="http://golang.org/help/">Help</a>
+<input type="text" id="search" name="q" class="inactive" value="Search">
+</div>
+<div id="heading"><a href="/">Slides and others</a></div>
+</form>
+
+</div></div>
+
+<div id="page">
+
+  <h1>Go talks</h1>
+
+  {{with .Path}}<h2>{{.}}</h2>{{end}}
+
+  {{with .Articles}}
+  <h4>Articles:</h4>
+  <dl>
+  {{range .}}
+  <dd><a href="/{{.Path}}">{{.Name}}</a>: {{.Title}}</dd>
+  {{end}}
+  </dl>
+  {{end}}
+
+  {{with .Slides}}
+  <h4>Slide decks:</h4>
+  <dl>
+  {{range .}}
+  <dd><a href="/{{.Path}}">{{.Name}}</a>: {{.Title}}</dd>
+  {{end}}
+  </dl>
+  {{end}}
+
+  {{with .Other}}
+  <h4>Files:</h4>
+  <dl>
+  {{range .}}
+  <dd><a href="/{{.Path}}">{{.Name}}</a></dd>
+  {{end}}
+  </dl>
+  {{end}}
+
+  {{with .Dirs}}
+  <h4>Sub-directories:</h4>
+  <dl>
+  {{range .}}
+  <dd><a href="/{{.Path}}">{{.Name}}</a></dd>
+  {{end}}
+  </dl>
+  {{end}}
+
+</div>
+
+<div id="footer">
+The content of this page is licensed under the Creative Commons Attribution 3.0 License, and code is licensed under a MIT license
+</div>
+
+<script>
+  (function() {
+    // Load Google Analytics tracking code on production site only.
+    if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
+      var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
+      ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+      var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
+    }
+  })();
+</script>
+</body>
+</html>
