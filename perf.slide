@@ -1,8 +1,9 @@
 # Performance: What is the all fuss?
 
-Mohamed Yousif (adonese)
+Razan Medani (@razanmedani) | Mohamed Yousif
 9 July 2021
-me@adonese.sd
+razan@soluspay.net
+adonese@soluspay.net
 
 ## Agenda
 
@@ -11,14 +12,15 @@ me@adonese.sd
 - Metrics, benchmarks and so
 - Live coding session?
 
-## About me
+## About us
 
-- Mohamed Yousif
-- Backend, interested in tech and programming in general
-- Worked in financial systems, gis, etc
-- [Github account](https://github.com/adonese)
-- Dedicated most of my time for open source [noebs](https://github.com/adonese/noebs), and friends
-- @Solus now
+- Razan Medani | Mohamed Yousif
+- Software developers with interest in distributed systems and coding in general
+- Love coding
+- We do fintech @noebs and @Solus
+- Open source developers
+- Many projects can be found [Here at noebs repo](https://github.com/noebs)
+
 
 ## To the team
 
@@ -222,3 +224,4 @@ Publisher - Subscriber has some good use cases in queues, in chats applications 
 ## Pub-Sub in noebs
 
 The problem we ran into is that we want to send notifications to our users without affecting the performance (eg without slowing down our requests / responses)
+
