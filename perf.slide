@@ -9,7 +9,7 @@ me@adonese.sd
 - We gonna talk about performance
 - Concurrency and parallelism 
 - Metrics, benchmarks and so
-- Live code session
+- Live coding session?
 
 ## About me
 
@@ -17,11 +17,16 @@ me@adonese.sd
 - Backend, interested in tech and programming in general
 - Worked in financial systems, gis, etc
 - [Github account](https://github.com/adonese)
-- Between jobs now
+- Dedicated most of my time for open source [noebs](https://github.com/adonese/noebs), and friends
+- @Solus now
 
 ## To the team
 
-.image statics/1.png
+This is really a special thank you to all of my colleagues, friends and the open source community in general. You guys rock!
+
+.image https://media.giphy.com/media/7mQbDHkoSsWl2/giphy.gif
+
+: i really love you guys!
 
 ## Let's talk Performance
 
@@ -31,36 +36,116 @@ me@adonese.sd
 
 I'm not going to go through that all
 
-## Subsection {#anchor}
+## i wanna send stuff
 
-- bullets
-- more bullets
-- a bullet continued
-  on the next line
+_let us go through a real life scenario (with code)_
 
-### Sub-subsection
+- the task is we wanna send sms for tons of users
+	- sms provider (twillio.sd)
+	- contact number
+	- content
+- that should be really simple, aight?
 
-.image statics/1.png
+## SMS code
 
-Some More text
+.code sms1.go
 
-	Preformatted text (code block)
-	is indented (by one tab, or four spaces)
+So, yeah it is that simple! 
+Send in a request and that is it, pretty much, aight!
 
-Further Text, including command invocations.
+(i mean we have to handle errors, properly refactor the code a bit and make the code `good practice`)
 
-## Section 2: Example formatting {#fmt}
+## SMS code - 2
 
-Formatting:
+Let's just briefly run the numbers here, our program in its current case:
 
-_italic_
-// A comment that is completely ignored.
-: Speaker notes.
-**bold**
-`program`
-Markup—_especially italic text_—can easily be overused.
-_Why use scoped\_ptr_? Use plain **\*ptr** instead.
+- can only send one message at a time (cool cool cool cool)
+- it works
 
-Visit [the Go home page](https://golang.org/).
+_Make it works, make it right and then make it fast_.
 
-.play main.go
+Now, we are happy. The sms is sent but albeit in some gibberish format (unicode!). But it works
+Let's make it right and make our have some legit messages (_whispering most of sms gateways have this unicode=1 query args, but we will check their docs anyways_)
+
+
+
+## SMS code - make it fast
+
+Our code works actually
+
+It exactly produces correct results
+
+And it sends our content in arabic too. So, what is the fuss all about?
+
+We need it to scale, baby!
+
+## Scaling
+
+Our code works pretty well when we want to send 100 sms
+
+What if we want to send to 10K! Or even 100K!
+
+
+
+	In the face of ambiguity, refuse the temptation to guess.
+	- Zen of Python
+
+Don't guess. Make informed decisions. Benchmark.
+
+
+## Get back to the code!
+
+- We have main program entry (can we scale up that? CAN WE?). Aka .exe file
+- But the real code looks like this:
+	- get numbers (list of numbers, maybe from database) **getMobileNumbers**
+	- `for` loop to iterate through those numbers, aight?
+	- and then we take every mobile number at a time and send them an sms **sendSMS**
+
+How can we fix that? I mean, where do you think the bottleneck is? Where our code slows us down? Where can we scale it up to make it less slower (errr faster i meant 😭🙄)
+
+It is clear our code spends most of its time in **sendSMS** function isn't it?
+
+## parallelism, Concurrency?
+
+Concurrency is about _dealing_ with lots of things at once. Parallelism is about _doing_ lots of things at once.
+- rob pike
+
+Some approaches:
+
+- use async / await? (بالجد؟)
+- launch threads?
+- use a queue? As in a database or what exactly?
+
+Gosh! What is the problem we are trying to solve again?
+
+## approaches
+
+
+.html table.html
+
+We want to send 1000 req / sec. 
+
+.code sms2.go
+
+
+## Concurrency - 2
+
+The previous program will exit before completion!
+
+We want to await somewhere?
+
+.code sms3.go 
+
+## Concurrency - 3
+
+- We have to handle errors
+- Perform retrials
+- And trying to not overwhelm the other server (ha!)
+
+We have to make some decisions here. What if a request failed? How we should interrupt that? And handle it.
+
+When you go down the road of concurrency, it is not a free ticket.
+
+- The program won't run top down
+- Data races occur A LOT!
+- And you start to have n-times the programs from procedural programs.
