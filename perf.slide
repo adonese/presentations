@@ -148,4 +148,77 @@ When you go down the road of concurrency, it is not a free ticket.
 
 - The program won't run top down
 - Data races occur A LOT!
-- And you start to have n-times the programs from procedural programs.
+- And you start to have n-times the programs than our normal programs.
+
+Our normal programs run top to bottom. They are linear in their behavior, we have no data races and everything is really smooth. It all comes at a cost
+
+## Concurrency - Design
+
+When you decide for concurrency, you have to answer these questions:
+
+Concurrency means handle lots of things at once, but not doing lots of things at once!
+
+- will that be faster? (concurrency doesn't mean speed)
+- how can you handle errors?
+- how can you interrupt errors?
+- `time.Sleep()`
+- when will the program ends (how can we notify the application's main thread that other threads have finished?)
+
+The problem with concurrency is everything gotta get off your hands.
+
+## Concurrency - Design 2
+
+**ERRORS**
+
+Why do we even care about that, let's just consider this scenario:
+
+Launch 1000 req / sec to the server, what could possibly go wrong:
+
+- we might not have an internet connection?
+- the server might be down
+- we might overwhelm our own system's resources [https://adonese.sd/2021/06/01/fd.html](more about this here!)
+
+Argh! Why do we even care! Let's just fire up those pesky sockets and call it a day.
+
+## Concurrency - Problems
+
+- Fire up multiple requests. BUT make sure we are not sending too much
+- Coordinate between the different threads without introducing data races
+
+## Concurrency - CSP
+
+One approach we extensively use throughout our org is CSP (or channels and go-routines)
+
+- Go-routines are really just co-routines, small tiny lil threads 
+- We have two approaches for sharing state (argh, data race again):
+	- we can use locks
+	- we can use channels 
+
+That solves for the second problem. But not really for the first one.
+
+
+## Concurrency - Counting semaphore
+
+How can we make sure we can only SEND 1000 request / second.
+
+- A trivial way is to use a global state with a lock
+- It will keep track of the number of our active requests we have, decrease the counter when a successful request is made
+
+That concept has a name to it and it is called `counting semaphore`. But enough with the semantics. Counting semaphore can help us ensure that only **N** active requests are made.
+
+
+## Concurrency - Other considerations?
+
+- Maybe we could do exponential back-offs 
+
+
+That is really all about it. But performance is such a wild topic. Let's discuss another example and this time from noebs.
+
+
+## Pub-Sub
+
+Publisher - Subscriber has some good use cases in queues, in chats applications and such scenarios. It is quite very powerful and has made as one of nice approaches to tackle interesting problems in software.
+
+## Pub-Sub in noebs
+
+The problem we ran into is that we want to send notifications to our users without affecting the performance (eg without slowing down our requests / responses)
