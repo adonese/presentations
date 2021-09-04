@@ -1,9 +1,9 @@
 # Performance: What is the all fuss?
 
 Razan Medani (@razanmedani) | Mohamed Yousif
-9 July 2021
-razan@soluspay.net
-adonese@soluspay.net
+5 September 2021
+razan@tutipay.com
+mohamed@tutipay.com
 
 ## Agenda
 
@@ -17,7 +17,8 @@ adonese@soluspay.net
 - Razan Medani | Mohamed Yousif
 - Software developers with interest in distributed systems and coding in general
 - Love coding
-- We do fintech @noebs and @Solus
+- We do fintech @noebs and Tuti Tech Investment
+- Prior to that we both worked at Solus
 - Open source developers
 - Many projects can be found [Here at noebs repo](https://github.com/noebs)
 
@@ -37,6 +38,7 @@ This is really a special thank you to all of my colleagues, friends and the open
 - Is my code slow?
 
 I'm not going to go through that all
+
 
 ## i wanna send stuff
 
@@ -67,8 +69,7 @@ Let's just briefly run the numbers here, our program in its current case:
 _Make it works, make it right and then make it fast_.
 
 Now, we are happy. The sms is sent but albeit in some gibberish format (unicode!). But it works
-Let's make it right and make our have some legit messages (_whispering most of sms gateways have this unicode=1 query args, but we will check their docs anyways_)
-
+Let's make it right and make ours have some legit messages (_whispering most of sms gateways have this unicode=1 query args, but we will check their docs anyways_)
 
 
 ## SMS code - make it fast
@@ -77,7 +78,7 @@ Our code works actually
 
 It exactly produces correct results
 
-And it sends our content in arabic too. So, what is the fuss all about?
+And it sends our content in arabic too. So, what is the fuss all about? (*winks* Ameenah)
 
 We need it to scale, baby!
 
@@ -87,12 +88,10 @@ Our code works pretty well when we want to send 100 sms
 
 What if we want to send to 10K! Or even 100K!
 
-
-
 	In the face of ambiguity, refuse the temptation to guess.
 	- Zen of Python
 
-Don't guess. Make informed decisions. Benchmark.
+Don't guess. Make informed decisions. Benchmark. Let's get back to the code...
 
 
 ## Get back to the code!
@@ -107,7 +106,7 @@ How can we fix that? I mean, where do you think the bottleneck is? Where our cod
 
 It is clear our code spends most of its time in **sendSMS** function isn't it?
 
-## parallelism, Concurrency?
+## Parallelism, Concurrency?
 
 Concurrency is about _dealing_ with lots of things at once. Parallelism is about _doing_ lots of things at once.
 - rob pike
@@ -117,6 +116,8 @@ Some approaches:
 - use async / await? (بالجد؟)
 - launch threads?
 - use a queue? As in a database or what exactly?
+
+- use SHELL! (a la multiporcessing lib in Python)
 
 Gosh! What is the problem we are trying to solve again?
 
@@ -178,7 +179,7 @@ Launch 1000 req / sec to the server, what could possibly go wrong:
 
 - we might not have an internet connection?
 - the server might be down
-- we might overwhelm our own system's resources [https://adonese.sd/2021/06/01/fd.html](more about this here!)
+- we might overwhelm our own system's resources [more about this here](https://adonese.sd/2021/06/01/fd.html)
 
 Argh! Why do we even care! Let's just fire up those pesky sockets and call it a day.
 
@@ -225,3 +226,131 @@ Publisher - Subscriber has some good use cases in queues, in chats applications 
 
 The problem we ran into is that we want to send notifications to our users without affecting the performance (eg without slowing down our requests / responses)
 
+
+## PubSub - What we want to do
+
+- Customers send us payouts (a la payment orders)
+- WE _perform_ the transactions onbehalf of them. WE charge their Customers
+- So our customers make a request for us to charge their customers (i repeated this point cuz it's cool and i don't want to run out of bullets)
+- we do a few stuffs before making a request to ebs AND then..
+- Can we do payment trivia? Stop me if that is irrelevant
+
+## Payment in Sudan
+
+- We have ebs
+- We have Bankak
+- We have Syber
+- And we also have the amazing noebs 
+
+Anyways, all of them is connected to EBS. EBS holds (operates) the national Switch. The national switch or the Switch is responsible of the actual process of **storing** the money _value store_ and moving the money _settlement.
+
+## Payment in Sudan 2 (I promised Razan i can go off with this to like at least 100 slides)
+
+- We are all connected to the Switch
+- And it is a one server (arrrrrg. Actually nvm waaaaaai)
+- And we are all connected with it
+- Bankak got to get away without connecting to that same switch, but *they* are still use it (external transactions)
+- Syber and whopping list of 33s banks are hosted in that SAME switch. They all use the same infra
+
+## Payment in Sudan 3 (ok that is already too much)
+
+So, payment transactions were never a synchronous process. Here's how an actual payment happen:
+
+- the card holder goes to the merchant (POS device)
+- swipes their card there and enters the PIN
+- the request is made the merchants banks (acquirer)
+- the merchant bank then sends another request to the card holder's bank (issuer)
+- the issuer bank authenticates the request:
+	- makes sure the data entered are secure
+	- correct PAN / PIN
+	- fraud-detection! (doesn't happen in Sudan, ofc!)
+	- and others
+- after that, a payment request is made, and the amount will be deducted from the card holder
+- the actual moving part of the money doesn't occur in any step we mentioned!
+- in Sudan it happens at the end of the day at 12:00 AM (midnight the transaction day)
+
+POINT IS: payment transactions *were* never synchronous in their nature. That is actually against them!
+
+## Back to the story?
+
+- So, payments are never meant to be synchronous
+- That is why the PubSub idea appeals to us
+
+Here is what we want to do 
+
+![Payouts business view](statics/pubsub.png)
+
+
+## From code view
+
+- We are using redis for pubsub 
+- We are using two goroutines:
+	- One listener-reader
+	- One listener-writer
+- We are using a channel to connect between them
+
+
+
+![Payouts business view](statics/pubsub-redis.png)
+
+## Bankak and Asynchronous
+
+## EBS and payment 
+
+- I know you are eager to list all of the hefty technical stuff
+	- Queues 
+	- WebSockets
+	- rEWriTE iT iN rUst (although we had a presentation to CBOS regarding a rust rewrite)
+	- gRPC noises
+- I hear you -- it is actually one of the questions we ask our interviews: problems with EBS / Bankak and what can you do to fix them
+- But, the problem is not merely technical one
+- On mere figures, our system is superiorily better
+	- we do online transactions (online settlement!)
+	- merchants settlement is still the lowest 
+- We don't want to draw any conclusions
+
+## noebs 
+
+- An open source payment gateway 
+- Licensed, connected to EBS 
+- Written in Go 
+- Used by 5 companies 
+- We are committed to continue its development and support
+- Free active [check the stats on github](https://github.com/adonese/noebs)
+- SDKS and extensive documentations
+	- Java 
+	- Go and Python 
+	- Checkout.sd 
+	- Node
+	- We want to add others 
+
+## noebs 
+
+- We would definitely love your contributions!
+
+We are open source after all!
+
+## noebs: active directions
+
+We have many open issues, but my personal interests are:
+
+- [Add support to gRPC for all noebs clients](https://github.com/adonese/noebs/issues/83) This one will definitely make write consumers for noebs more easier and more stable
+- [Implementing card tokenization](https://github.com/adonese/noebs/issues/85)
+
+You can view all of the issues here: https://github.com/adonese/noebs/issues
+
+
+## Final notes
+
+- be kind to yourself and others 
+- your career doesn't define you
+- diversity and inclusive are very important. You are not living in your own world.
+
+## We are hiring
+
+- if you are interested in what we are building, shoot me email at mohamed@tutipay.com 
+- we have a lovely environment and a nice office
+- we want to push things further
+- open source friendly (based on noebs kman) + we work on our own solutions (no clients whatsoever)
+
+![Tuti Logo](statics/tuti.png)
