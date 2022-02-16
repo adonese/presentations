@@ -267,6 +267,8 @@ So, payment transactions were never a synchronous process. Here's how an actual 
 	- correct PAN / PIN
 	- fraud-detection! (doesn't happen in Sudan, ofc!)
 	- and others
+
+## Payment in Sudan (Contd.)
 - after that, a payment request is made, and the amount will be deducted from the card holder
 - the actual moving part of the money doesn't occur in any step we mentioned!
 - in Sudan it happens at the end of the day at 12:00 AM (midnight the transaction day)
@@ -306,6 +308,9 @@ Here is what we want to do
 	- gRPC noises
 - I hear you -- it is actually one of the questions we ask our interviews: problems with EBS / Bankak and what can you do to fix them
 - But, the problem is not merely technical one
+
+## EBS and payment (Cont.)
+
 - On mere figures, our system is superiorily better
 	- we do online transactions (online settlement!)
 	- merchants settlement is still the lowest 
