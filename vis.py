@@ -8,7 +8,7 @@ from diagrams.generic.device import Mobile
 from diagrams.onprem.network import Internet
 from diagrams.custom import Custom
 
-with Diagram("Extended Mini Switch System Architecture with Prefunded Wallet", show=False, direction="TB"):
+with Diagram("Extended Mini Switch System Architecture with Prefunded Wallet", show=False, direction="LR", graph_attr={"size": "10,10"}):
     user = User("End User")
     mobile = [Mobile("Android App"), Mobile("iOS App")]
 
