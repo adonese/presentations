@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for noebs-presentation on 2023-11-22T16:07:33+04:00
+# fly.toml app configuration file generated for noebs-presentation-winter-thunder-4857-billowing-log-7426 on 2023-11-22T16:35:05+04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "noebs-presentation"
+app = "noebs-presentation-winter-thunder-4857-billowing-log-7426"
 primary_region = "cdg"
 
 [build]
