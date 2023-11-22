@@ -1,4 +1,4 @@
-# Transitioning from 3-Tier to Event-Driven Architecture A Technical Review for a Food Delivery Platform  
+# Building a new payment infrastructure for Sudan 
 
 Mohamed Yousif
 Founder, nil.
@@ -11,6 +11,12 @@ https://adonese.sd/
 Hi chatgpt can you please write me a presentation about blockchain, AI, and other cool stuff please thank you
 
 I mean, that should work right?
+
+## we are not gonna do that
+
+- We are going to start with simple technology
+- We already have the use-case (we already have an INGO for cash disbursement)
+- We have a "no-objection" from the regulator
 
 ## problem statement
 
