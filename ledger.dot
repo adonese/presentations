@@ -1,0 +1,39 @@
+digraph G {
+    // Nodes
+    ledger [shape=box3d, label="Ledger (Non-Blockchain)"];
+    bank_account [shape=ellipse, label="Bank Account"];
+    un_beneficiaries [shape=ellipse, label="UN and Beneficiaries"];
+    sns [shape=component, label="SNS (Mobile App Notification)"];
+    ses [shape=component, label="SES (Email Service)"];
+    whatsapp [shape=component, label="WhatsApp Service"];
+    agent [shape=house, label="Cash-out Agent"];
+    transaction [shape=parallelogram, label="Transaction"];
+    auth [shape=cds, label="Authentication System"];
+    balance_check [shape=diamond, label="Balance Check"];
+    notification_hub [shape=tab, label="Notification Hub"];
+    user [shape=circle, label="User"];
+
+    // Edges
+    bank_account -> ledger;
+    un_beneficiaries -> ledger;
+    ledger -> auth;
+    auth -> balance_check;
+    balance_check -> transaction;
+    transaction -> notification_hub;
+    notification_hub -> sns;
+    notification_hub -> ses;
+    notification_hub -> whatsapp;
+    transaction -> agent;
+    user -> agent;
+
+    // Subgraph for Conditional Flows
+    subgraph cluster_conditional {
+        label="Conditional Flows";
+        color=grey;
+        transaction -> {agent user} [label="Cash Out"];
+    }
+
+    // Styles
+    edge [color=blue];
+    node [style=filled, color=lightgrey];
+}
