@@ -3,7 +3,7 @@
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "noebs-presentation-winter-thunder-4857-billowing-log-7426"
+app = "noebs-presentation"
 primary_region = "cdg"
 
 [build]
