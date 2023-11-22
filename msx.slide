@@ -16,11 +16,16 @@ I mean, that should work right?
 
 - We are going to start with simple technology
 - We already have the use-case (we already have an INGO for cash disbursement)
-- We have a "no-objection" from the regulator
+- We have actively engaged Central Bank 
+
+## We tend to create solutions to nonexistent problems
 
 ## problem statement
 
-We tend to create solutions for nonexistent problems
+- The Centralized National Payment Switch had collapsed 
+- High cost of remittance (between 8% - 20%)
+- Humanatarian agencies are struggling to come up with technical solutions for cash disbursement
+
 
 ## key factors about Sudan
 
@@ -54,7 +59,7 @@ We tend to create solutions for nonexistent problems
 - We have a Centralized National Payment Switch and it totally collapsed amidst war
 - Except for 2 private banks, all of the other banks are severly affected (I used to have a Financial Service Provider Fintech before the war)
 
-## We can just take our W
+## Cannot you just take your L
 
 ## What is our background
 
@@ -74,13 +79,15 @@ After several years working with the Central Bank, i have grown susceptible to T
 
 I remember having this conversation with Nick Williams (Co-Founder of Sempo) and more recently with Brenton
 
-We were effectively reaching out to see whether we are on the right path 
+- Stable coin unique selling feature is that it is something we can explain to the Central Bank. It is a currency that is linked to an actual bank account which CBS can access it
 
-##
+## Stable Coin has it merits - Part 2
 
-![alt-pic](switch.png)
+Years ago we have had a successful and thriving mobile banking solutions for years before CBS 
+- We will try to make a case of "partial" relevancy between Mobile Money and Stable Coin to drive the econmy by processing more remittance via this channel.
 
-##
+
+## 
 
 - We have a fintech license in Sudan 
 - Already partners to the largest Mobile Money in africa (MoMo)
@@ -89,13 +96,21 @@ We were effectively reaching out to see whether we are on the right path
 - We have license from SMS, IVR and working on USSD (outreach is a no problem for us)
 - We need to give meaning to our closed-loop system 
 
+## brief business plan 
+
+- We are operating in two lines of business: building tools for businesses (NGOS and enterprises)
+- Offering our product for our customers; so we have this slow-fast train analogy
+
+[<img src="train.png" width="500"/>](train.png)
+
+
 ## MSX and SUI 
 
 - Can provide us with the utility to offload managing the network 
 - We will have a prefunded wallet hosted at MSX and we will making internal transfers on that;
 - It will be also monitored by the CB 
 
-## Short-term and end-game
+## Short-term goals 
 
 - We will provide the liquidity to our wallet at MSX 
 - We want to make sure that the cost of transfers will be manageable
@@ -103,14 +118,33 @@ We were effectively reaching out to see whether we are on the right path
 - In case of a rejection, we will fall-back to use MSX for our NGOs humanatarian aid platform 
 - The idea is to have a presence in the market that will make us able to dictate the business processes to the Central Bank 
 
+## Partners 
+
+- We have a pilot next month for our SME program
+- We have solid interest from Cooperatives and Saving groups (the largest sector in Sudan and typically unbanked)
+
+## Exit strategy 
+
+- We are diversifying our portofolio of products 
+- We are already working with different segments (INGOs, SMEs, Coops and SACCOs..)
+- We have agreed with Bank of Khartoum to hold our wallet 
+- We have partnered with MoMo for payouts and collection (cash in / cash out)
+
+
 ## Technology 
 
 - We have a fund management platform 
 - A mobile banking app connected to our current ledger 
 - We are using whatsapp for onboarding and KYC (2-steps, full KYC for remittance and leaner for domestic services)
+- Most of our work is open sourced: [here](https://github.com/noebs)
 
-## Partners 
+##
 
-- We have a pilot next month for our SME program
-- We have solid interest from Cooperatives and Saving groups (the largest sector in Sudan and typically unbanked)
+![alt-pic](switch.png)
+
+## Challenges
+
+- Low purchasing power; we are operating in a low-growth market
+- Transaction fees (or, gas fees in blockchain terms -- sorry guys we are blockchain noobs here)
+- We are here to listen and learn 
 
