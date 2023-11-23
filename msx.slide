@@ -12,7 +12,13 @@ Hi chatgpt can you please write me a presentation about blockchain, AI, and othe
 
 I mean, that should work right?
 
-## we are not gonna do that
+## Problem statement
+
+- The Centralized National Payment Switch had collapsed 
+- High cost of remittance (between 8% - 20%)
+- Humanitarian agencies are struggling to come up with technical solutions for cash disbursement
+
+## We are not gonna do that
 
 - We are going to start with simple technology
 - We already have the use-case (we already have an INGO for cash disbursement)
@@ -20,22 +26,11 @@ I mean, that should work right?
 
 ## We tend to create solutions to nonexistent problems
 
-## problem statement
 
-- The Centralized National Payment Switch had collapsed 
-- High cost of remittance (between 8% - 20%)
-- Humanatarian agencies are struggling to come up with technical solutions for cash disbursement
+## Key factors about Sudan
 
-
-## key factors about Sudan
-
-- 1.1 Milion Sudanese left Sudan by October
-- 4.3 Milion newly IDPS
-- 124 Billion is Sudan's GDP
-
-
-## key factors about Sudan - Part 2
-
+- 6 millions IDP and immigrants post-war
+- 51 Billion is Sudan's GDP
 - 3 Billion is the estimated remittance (speculation is quite more from black market)
 - 18yo is the median age in Sudan (https://datareportal.com/reports/digital-2023-sudan)
 - mobile penetration is far more higher than banking
@@ -44,50 +39,24 @@ I mean, that should work right?
 
 **there are challenges and great potential**
 
-## our story
-
-- We are building a digital funds management platform
-- Essentially, it is a glorified Excel sheet with some automation
-- We were internally discussing blockchain (*) and we split teams about the technology in terms of compliance and CBOS
-- CBOS was _okay_ about us using blockchain for remittance 
-- We have our plan B: that is us providing our platform for NGOs so they can oversee the performance of the funds
-
-## More interesting facts
-
-- Transaction fees are 8% - <20%
-- USD to Sudanese Pounds has skyrocketted from 560 to 1060 (that's almost 100%)
-- We have a Centralized National Payment Switch and it totally collapsed amidst war
-- Except for 2 private banks, all of the other banks are severly affected (I used to have a Financial Service Provider Fintech before the war)
 
 ## Cannot you just take your L
 
-## What is our background
-
-We are both technical bros
-- Mohamed (me): i have co-founded multiple fintechs before, led and co-founded a SaaS remittance / fintech 
-- Ahmed: was the head of security at Central Bank of Sudan before joing MTN and moving full-time to 249Startups
-
-We are coming from fintech and e-payment. We know Africa quite well and we know what might work and what had failed and mostly WHY
-
-## Why stablecoin and blockchain
-
-After several years working with the Central Bank, i have grown susceptible to The Regulator POV
 
 ## In hindsight, it could've been just a regular database
+
+After several years working with the Central Bank, i have grown susceptible to The Regulator POV
 
 ## Stable Coin has it merits
 
 I remember having this conversation with Nick Williams (Co-Founder of Sempo) and more recently with Brenton
 
-- Stable coin unique selling feature is that it is something we can explain to the Central Bank. It is a currency that is linked to an actual bank account which CBS can access it
-
-## Stable Coin has it merits - Part 2
+- Stable coin unique selling feature is that it is something we can explain to the Central Bank and a way that they could reason about
 
 Years ago we have had a successful and thriving mobile banking solutions for years before CBS 
 - We will try to make a case of "partial" relevancy between Mobile Money and Stable Coin to drive the econmy by processing more remittance via this channel.
 
-
-## 
+## What are we missing 
 
 - We have a fintech license in Sudan 
 - Already partners to the largest Mobile Money in africa (MoMo)
@@ -96,13 +65,22 @@ Years ago we have had a successful and thriving mobile banking solutions for yea
 - We have license from SMS, IVR and working on USSD (outreach is a no problem for us)
 - We need to give meaning to our closed-loop system 
 
-## brief business plan 
+## Brief business plan 
 
 - We are operating in two lines of business: building tools for businesses (NGOS and enterprises)
 - Offering our product for our customers; so we have this slow-fast train analogy
 
 [<img src="train.png" width="500"/>](train.png)
 
+## Short-term goals 
+
+- We will provide the liquidity to our wallet at MSX 
+- We want to make sure that the cost of transfers will be manageable
+- While actively working with the Central Bank for more remittance options 
+- In case of a rejection, we will fall-back to use MSX for our NGOs Humanitarian aid platform 
+- The idea is to have a presence in the market that will make us able to dictate the business processes to the Central Bank 
+- We have a pilot next month for our SME program
+- We have solid interest from Cooperatives and Saving groups (the largest sector in Sudan and typically unbanked)
 
 ## MSX and SUI 
 
@@ -110,25 +88,15 @@ Years ago we have had a successful and thriving mobile banking solutions for yea
 - We will have a prefunded wallet hosted at MSX and we will making internal transfers on that;
 - It will be also monitored by the CB 
 
-## Short-term goals 
 
-- We will provide the liquidity to our wallet at MSX 
-- We want to make sure that the cost of transfers will be manageable
-- While actively working with the Central Bank for more remittance options 
-- In case of a rejection, we will fall-back to use MSX for our NGOs humanatarian aid platform 
-- The idea is to have a presence in the market that will make us able to dictate the business processes to the Central Bank 
-
-## Partners 
-
-- We have a pilot next month for our SME program
-- We have solid interest from Cooperatives and Saving groups (the largest sector in Sudan and typically unbanked)
 
 ## Exit strategy 
 
 - We are diversifying our portofolio of products 
 - We are already working with different segments (INGOs, SMEs, Coops and SACCOs..)
-- We have agreed with Bank of Khartoum to hold our wallet 
+- We have arrangements with Bank of Khartoum 
 - We have partnered with MoMo for payouts and collection (cash in / cash out)
+- We are discovering what we are building more than designing it
 
 
 ## Technology 
@@ -147,4 +115,12 @@ Years ago we have had a successful and thriving mobile banking solutions for yea
 - Low purchasing power; we are operating in a low-growth market
 - Transaction fees (or, gas fees in blockchain terms -- sorry guys we are blockchain noobs here)
 - We are here to listen and learn 
+
+## What is our background
+
+We are both technical bros
+- Mohamed (me): i have co-founded multiple fintechs before, led and co-founded a SaaS remittance / fintech 
+- Ahmed: was the head of security at Central Bank of Sudan before joing MTN and moving full-time to 249Startups
+
+We are coming from fintech and e-payment. We know Africa quite well and we know what might work and what had failed and mostly WHY
 
