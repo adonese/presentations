@@ -29,12 +29,10 @@
 
 <form method="GET" action="//golang.org/search">
 <div id="menu">
-<a href="http://noebs.dev">Noebs</a>
+<a href="http://noebs.sd">Noebs</a>
 <a href="http://adonese.sd">Blog Post</a>
 <a href="http://twitter.com/_adonese">Twitter</a>
 <a href="http://github.com/noebs/">Open Source Org</a>
-<a href="http://golang.org/help/">Help</a>
-<input type="text" id="search" name="q" class="inactive" value="Search">
 </div>
 <div id="heading"><a href="/">Slides and others</a></div>
 </form>
@@ -43,7 +41,7 @@
 
 <div id="page">
 
-  <h1>Go talks</h1>
+  <h1>Mohamed Yousif Public Talks</h1>
 
   {{with .Path}}<h2>{{.}}</h2>{{end}}
 
@@ -61,24 +59,6 @@
   <dl>
   {{range .}}
   <dd><a href="/{{.Path}}">{{.Name}}</a>: {{.Title}}</dd>
-  {{end}}
-  </dl>
-  {{end}}
-
-  {{with .Other}}
-  <h4>Files:</h4>
-  <dl>
-  {{range .}}
-  <dd><a href="/{{.Path}}">{{.Name}}</a></dd>
-  {{end}}
-  </dl>
-  {{end}}
-
-  {{with .Dirs}}
-  <h4>Sub-directories:</h4>
-  <dl>
-  {{range .}}
-  <dd><a href="/{{.Path}}">{{.Name}}</a></dd>
   {{end}}
   </dl>
   {{end}}
