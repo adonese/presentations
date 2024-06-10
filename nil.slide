@@ -1,0 +1,45 @@
+# What is noebs ledger and nil
+
+Mohamed Yousif
+me@adonese.sd
+https://adonese.sd/
+@_adonese
+
+## Introduction  
+  
+- This should be a short technical brief about nil wallet and how it works 
+- The underlying technology, prerequisite and when is noebs the best to use and when it is not 
+- Practical use cases too
+  
+## Nil components 
+  
+We provide set of APIs via a secure and shared infrastructure so that implementers can securely power their systems. In essence, we look a lot like what EBS was doing, but minus the legal title.
+
+## Live Demo - The App 
+
+The app can be downloaded <https://play.google.com/store/apps/details?id=sd.nil.app>
+- Currently in beta testing
+
+## The dashboard 
+
+Nil also provides a dashboard to perform admin tasks, such as setting up the initial main account (Exchange), and disbursing cash too
+
+The dashboard can also be viewed live at <https://dash.nil.sd>
+
+## We learned things from beta testing 
+
+In addition to various bugs and usability enhancements, we have gained valuable insights from our work with Ebdaa Bank and Gaith:
+- Migrate to a multi-tenancy architecture: every new account will register under a specific tenant, or client.
+    - You cannot transfer from one tenant to another (we have an exchange approach for that)
+    - A user can have multiple accounts with the same identifier (mobile)
+- We are using public key cryptography to sign and verify messages (transactions), and we are following exactly EBS approach (+ improvements)
+- We have prod pilot next month and we will be testing our KYC (in addition to all of the app and the dashboard features)
+
+## Support 
+
+- We have intercom for support and CRM (in development yet)
+- Integration APIs and SDKs for external systems (code examples, api documentations, and others)
+
+## Q&A 
+
+Feel free to ask any questions.
