@@ -1,0 +1,85 @@
+# Exinity Payment Gateway
+
+Mohamed Yousif
+me@adonese.sd
+https://adonese.sd/
+@_adonese
+
+## Agenda
+- I will try to use this to better arrange my thoughts
+- Please make it interactive 
+- I will try to share anecdotes, rationale, and make it chit chat
+
+## the code 
+
+- it has many files, i don't do that. I like sqlite3 <https://www.sqlite.org/amalgamation.html> approach (kinda!)
+- but mine usually are:
+    - main.go 
+    - types.go 
+    - specs.md 
+    - README.md 
+- there's also the temptation to overly engineer the task to look cool
+- we have a payment processor, also acts as our storage 
+- it then rpc or in-process calls our payment router (to dispatch it to either withdrawal / deposit)
+
+## the problem 
+- we want to simulate a payment gateway with deposit, withdrawal, and status. We would also love to have different types (json, xml) -- and the notion that one can potentially be able to add iso8583 and so on
+- we would also love to have circuit breaker, microservices, retrials 
+- but the task also wants to assess one's capabilities in writing go systems 
+- and the task should also be done in <10 hrs 
+- we call this an escrow integration (very interesting)
+
+## my thought process 
+- let's do microservices first! YAY!
+- I'd have gateway A service, gateway B, the routing service as well -- the routing service may or may not be the api gateway and "our main" entry point
+- now, I'd put the retrial logic in the gateway (the routing service), i could also have a heartbeat between gateway A and gateway B so we can do circuit breaker 
+- should i use websockets? http long polling? Or we could use gRPC kep-alive or custom heartbeat in grpc maybe with a ticker
+- but i also need to be mindful of time, and unit tests, and iso8583 and ... that was scary 
+
+## my thought process - 2
+- let's do what i know best: i write libraries <https://github.com/adonese/tq> and <https://github.com/adonese/ledger> and <https://github.com/adonese/noebs>
+
+```
+root/
+    lib.go 
+    types.go 
+    lib_test.go 
+    cli/
+        main.go 
+```
+i will still have to demonstrate more in my main.go and i would have shifted the complexity to a different layer
+microservices often times tend to conflates logical boundaries with how the code is deployed.
+
+## service weaver for the win!
+
+let me show you in action:
+- write modular code 
+- deploy as microservices 
+
+## unit testing and integration testing
+- the program comes with only integration tests for the public facing apis, why?
+- i have been in fintech and i learned to never mess with our public apis 
+
+## choices
+- gatewayA and gatewayB _were_ and definitely could have been one gateway (i made them that way for showing service weaver)
+- payment service and router could have been one service, but I made the decision to have the store at the payment service 
+
+## elephant in the room 
+- service weaver comes with automatic retrials (be aware of idempotency)
+- failures and crashes: service weaver automtically detect and retry failed components <https://github.com/ServiceWeaver/weaver/issues/694>
+- scaling up and down components based on load
+- there might be issues down stream, but..
+
+<img src="weaver.png" width="900">
+
+
+## notes and conclusion
+- is service weaver the answer? no, not quite there yet
+- service weaver components calls can be rpc or in process calls 
+- we ran into interesting cases with that
+- it is simple to hook up additional services (components) (Merger)
+
+
+## What do you think?
+
+.caption Your thoughts and feedback are welcome!
